@@ -13,8 +13,8 @@
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "playtime.helloWorld",
-      "title": "Hello World"
+      "command": "playtime.startPlayTime",
+      "title": "Start PlayTime"
     }]
   },
   "scripts": {
