@@ -2,26 +2,68 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+let startTime, updatedTime, difference;
+let timerInterval = null;
+let running = false;
+
+// Start the time
+function startTimer() {
+  if (!running) {
+    startTime = new Date().getTime();
+    timerInterval = setInterval(updateTimer, 1000);
+    running = true;
+  }
+}
+
+// Stop the time
+function stopTimer() {
+  clearInterval(timerInterval);
+  running = false;
+}
+
+// Reset the time
+function resetTimer() {
+  clearInterval(timerInterval);
+  running = false;
+  difference = 0;
+  printTime(0, 0, 0);
+}
+
+// Update the stopwatch
+function updateTimer() {
+  updatedTime = new Date().getTime();
+  difference = updatedTime - startTime;
+
+  let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  printTime(hours, minutes, seconds);
+}
+
+// Print the time
+function printTime(hours, minutes, seconds) {
+  let formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  //console.log(formattedTime);
+  vscode.window.setStatusBarMessage(`Current session: ${formattedTime}`);
+}
+
+// Always two digits
+function pad(n) {
+  return n < 10 ? '0' + n : n;
+}
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "playtime" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('playtime.startPlayTime', function () {
 		// The code you place here will be executed every time your command is executed
-
 		// Display a message box to the user
-		vscode.window.setStatusBarMessage('Current session length: ');
+		startTimer();
+		// vscode.window.setStatusBarMessage(`Current session: ${formattedTime}`);
 	});
 
 	context.subscriptions.push(disposable);
