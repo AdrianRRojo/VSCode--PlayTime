@@ -62,7 +62,7 @@ function pad(n) {
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	console.log('Congratulations, your extension "playtime" is now active!');
+	//console.log('Congratulations, your extension "playtime" is now active!');
 
 	let start = vscode.commands.registerCommand('playtime.startPlayTime', function () {
 		// The code you place here will be executed every time your command is executed
