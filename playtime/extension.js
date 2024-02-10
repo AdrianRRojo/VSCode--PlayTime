@@ -59,14 +59,28 @@ function pad(n) {
 function activate(context) {
 	console.log('Congratulations, your extension "playtime" is now active!');
 
-	let disposable = vscode.commands.registerCommand('playtime.startPlayTime', function () {
+	let start = vscode.commands.registerCommand('playtime.startPlayTime', function () {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		startTimer();
 		// vscode.window.setStatusBarMessage(`Current session: ${formattedTime}`);
 	});
+	let reset = vscode.commands.registerCommand('playtime.resetPlayTime', function () {
+		// The code you place here will be executed every time your command is executed
+		// Display a message box to the user
+		resetTimer();
+		// vscode.window.setStatusBarMessage(`Current session: ${formattedTime}`);
+	});
+	let stop = vscode.commands.registerCommand('playtime.stopPlayTime', function () {
+		// The code you place here will be executed every time your command is executed
+		// Display a message box to the user
+		stopTimer();
+		// vscode.window.setStatusBarMessage(`Current session: ${formattedTime}`);
+	});
 
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(start);
+	context.subscriptions.push(reset);
+	context.subscriptions.push(stop);
 }
 
 // This method is called when your extension is deactivated
