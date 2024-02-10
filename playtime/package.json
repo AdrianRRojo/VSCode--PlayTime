@@ -14,7 +14,11 @@
   "contributes": {
     "commands": [{
       "command": "playtime.startPlayTime",
-      "title": "Start PlayTime"
+      "title": "Start PlayTime",
+      "command 2": "playtime.stopPlayTime",
+      "title 2": "Stop PlayTime",
+      "command 3": "playtime.resetPlayTime",
+      "title 3": "Reset PlayTime"
     }]
   },
   "scripts": {
