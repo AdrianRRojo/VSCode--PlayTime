@@ -12,14 +12,19 @@
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "playtime.startPlayTime",
-      "title": "Start PlayTime",
-      "command 2": "playtime.stopPlayTime",
-      "title 2": "Stop PlayTime",
-      "command 3": "playtime.resetPlayTime",
-      "title 3": "Reset PlayTime"
-    }]
+    "commands": [
+      {
+        "command": "playtime.startPlayTime",
+        "title": "Start PlayTime"
+      },
+      {
+        "command": "playtime.stopPlayTime",
+        "title": "Stop PlayTime"
+      },
+      {
+        "command": "playtime.resetPlayTime",
+        "title": "Reset PlayTime"
+      }]
   },
   "scripts": {
     "lint": "eslint .",

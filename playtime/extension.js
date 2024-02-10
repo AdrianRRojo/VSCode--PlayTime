@@ -27,6 +27,11 @@ function resetTimer() {
   running = false;
   difference = 0;
   printTime(0, 0, 0);
+
+  // Idk why but I like it better when it pauses
+  setTimeout(function(){
+	startTimer();
+  }, 500);
 }
 
 // Update the stopwatch
@@ -63,19 +68,13 @@ function activate(context) {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		startTimer();
-		// vscode.window.setStatusBarMessage(`Current session: ${formattedTime}`);
 	});
 	let reset = vscode.commands.registerCommand('playtime.resetPlayTime', function () {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
 		resetTimer();
-		// vscode.window.setStatusBarMessage(`Current session: ${formattedTime}`);
 	});
 	let stop = vscode.commands.registerCommand('playtime.stopPlayTime', function () {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
 		stopTimer();
-		// vscode.window.setStatusBarMessage(`Current session: ${formattedTime}`);
+
 	});
 
 	context.subscriptions.push(start);
