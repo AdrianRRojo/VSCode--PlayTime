@@ -4,7 +4,7 @@ Hey! Thanks for checking out PlayTime, a simple stopwatch you can add to track y
 
 ## Screenshot
 
-    ![Timer start example](example.png)
+![Timer start example](example.png)
 
 ## Options
 
